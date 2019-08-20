@@ -24,8 +24,6 @@ class ApiClient
 	const REQUEST_TIMEOUT = 60;
 	const REQUEST_HANDLER = 'curl';
 
-	private $username;
-	private $hash;
 	private $apiKey;
 
 	private $errorReporting = false;
@@ -40,14 +38,9 @@ class ApiClient
 	 * @param $username
 	 * @param $hash
 	 */
-	function __construct($username, $hash, $apiKey = false)
+	function __construct($apiKey)
 	{
-		$this->username = $username;
-		$this->hash = $hash;
-		if ($apiKey) {
-			$this->apiKey = $apiKey;
-		}
-
+		$this->apiKey = $apiKey;
 	}
 
 	/**
@@ -60,14 +53,7 @@ class ApiClient
 	 */
 	private function _sendRequest($command, $params = [])
 	{
-		if ($this->apiKey && !empty($this->apiKey)) {
-			$params['apiKey'] = $this->apiKey;
-
-		} else {
-			$params['hash'] = $this->hash;
-		}
-		// Create request string
-		$params['username'] = $this->username;
+		$params['apiKey'] = $this->apiKey;
 
 		$this->lastRequest = $params;
 
