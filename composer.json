@@ -1,0 +1,21 @@
+{
+  "name": "solstis86/textlocal-php",
+  "description": "PHP API wrapper for Textlocal",
+  "authors": [
+    {
+      "name": "James Fairbrother",
+      "email": "james@mvdigital.co"
+    }
+  ],
+  "minimum-stability": "dev",
+  "require": {
+    "php": ">=5.4.0",
+    "ext-json": "*",
+    "ext-curl": "*"
+  },
+  "autoload": {
+    "psr-0": {
+      "TextLocal": "src/"
+    }
+  }
+}
